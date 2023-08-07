@@ -1,0 +1,37 @@
+[
+  {
+    "objectID": "penguins.html",
+    "href": "penguins.html",
+    "title": "Hello, Penguins!",
+    "section": "",
+    "text": "For this analysis we’ll use the penguins dataset from the palmerpenguins package.(Gorman, Williams, and Fraser 2014)\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.2     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.2     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n✔ purrr     1.0.1     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(ggthemes)\nlibrary(palmerpenguins)\nlibrary(gt)\n\n\nglimpse(penguins)\n\nRows: 344\nColumns: 8\n$ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…\n$ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…\n$ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …\n$ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …\n$ flipper_length_mm &lt;int&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…\n$ body_mass_g       &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …\n$ sex               &lt;fct&gt; male, female, female, NA, female, male, female, male…\n$ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…\n\n\n\n\n\n\nggplot(\n  penguins,\n  aes(\n    x = bill_length_mm, y = bill_depth_mm,\n    color = species\n  )\n) +\n  geom_point() +\n  geom_smooth() +\n  scale_color_colorblind() +\n  theme(legend.position = \"top\") +\n  labs(x = \"Bill length (mm)\", y = \"Bill depth (mm)\")\n\n\n\n\n\n\n\n\n1penguins |&gt;\n2  slice_head(n = 10) |&gt;\n3  select(species, island, bill_length_mm, bill_depth_mm) |&gt;\n4  gt()\n\n\n1\n\nTake penguins data frame, and then,\n\n2\n\nSlice the top 10 rows, and then,\n\n3\n\nSelect the indicated variables, and then,\n\n4\n\nMake a gt table.\n\n\n\n\n\n\n\n  \n    \n    \n      species\n      island\n      bill_length_mm\n      bill_depth_mm\n    \n  \n  \n    Adelie\nTorgersen\n39.1\n18.7\n    Adelie\nTorgersen\n39.5\n17.4\n    Adelie\nTorgersen\n40.3\n18.0\n    Adelie\nTorgersen\nNA\nNA\n    Adelie\nTorgersen\n36.7\n19.3\n    Adelie\nTorgersen\n39.3\n20.6\n    Adelie\nTorgersen\n38.9\n17.8\n    Adelie\nTorgersen\n39.2\n19.6\n    Adelie\nTorgersen\n34.1\n18.1\n    Adelie\nTorgersen\n42.0\n20.2"
+  },
+  {
+    "objectID": "penguins.html#data",
+    "href": "penguins.html#data",
+    "title": "Hello, Penguins!",
+    "section": "",
+    "text": "For this analysis we’ll use the penguins dataset from the palmerpenguins package.(Gorman, Williams, and Fraser 2014)\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.2     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.2     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n✔ purrr     1.0.1     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(ggthemes)\nlibrary(palmerpenguins)\nlibrary(gt)\n\n\nglimpse(penguins)\n\nRows: 344\nColumns: 8\n$ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…\n$ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…\n$ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …\n$ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …\n$ flipper_length_mm &lt;int&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…\n$ body_mass_g       &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …\n$ sex               &lt;fct&gt; male, female, female, NA, female, male, female, male…\n$ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…"
+  },
+  {
+    "objectID": "penguins.html#species",
+    "href": "penguins.html#species",
+    "title": "Hello, Penguins!",
+    "section": "",
+    "text": "ggplot(\n  penguins,\n  aes(\n    x = bill_length_mm, y = bill_depth_mm,\n    color = species\n  )\n) +\n  geom_point() +\n  geom_smooth() +\n  scale_color_colorblind() +\n  theme(legend.position = \"top\") +\n  labs(x = \"Bill length (mm)\", y = \"Bill depth (mm)\")"
+  },
+  {
+    "objectID": "penguins.html#penguins",
+    "href": "penguins.html#penguins",
+    "title": "Hello, Penguins!",
+    "section": "",
+    "text": "1penguins |&gt;\n2  slice_head(n = 10) |&gt;\n3  select(species, island, bill_length_mm, bill_depth_mm) |&gt;\n4  gt()\n\n\n1\n\nTake penguins data frame, and then,\n\n2\n\nSlice the top 10 rows, and then,\n\n3\n\nSelect the indicated variables, and then,\n\n4\n\nMake a gt table.\n\n\n\n\n\n\n\n  \n    \n    \n      species\n      island\n      bill_length_mm\n      bill_depth_mm\n    \n  \n  \n    Adelie\nTorgersen\n39.1\n18.7\n    Adelie\nTorgersen\n39.5\n17.4\n    Adelie\nTorgersen\n40.3\n18.0\n    Adelie\nTorgersen\nNA\nNA\n    Adelie\nTorgersen\n36.7\n19.3\n    Adelie\nTorgersen\n39.3\n20.6\n    Adelie\nTorgersen\n38.9\n17.8\n    Adelie\nTorgersen\n39.2\n19.6\n    Adelie\nTorgersen\n34.1\n18.1\n    Adelie\nTorgersen\n42.0\n20.2"
+  },
+  {
+    "objectID": "penguins.html#modeling-results",
+    "href": "penguins.html#modeling-results",
+    "title": "Hello, Penguins!",
+    "section": "Modeling results",
+    "text": "Modeling results\n\n\nSome modeling results go here\n\nOthers go here\n\n1 + 1\n\n[1] 2"
+  }
+]
