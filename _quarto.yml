@@ -1,0 +1,8 @@
+project:
+  type: website
+
+website:
+  navbar:
+    left:
+      - index.qmd
+      - penguins.qmd

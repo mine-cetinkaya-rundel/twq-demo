@@ -1,0 +1,88 @@
+---
+title: "Hello, Penguins!"
+author: Mine Çetinkaya-Rundel
+institute: Duke University
+date: now
+format: html
+editor: visual
+bibliography: references.bib
+execute:
+  echo: true
+---
+
+# Introduction
+
+## Data
+
+For this analysis we'll use the `penguins` dataset from the [**palmerpenguins**](https://allisonhorst.github.io/palmerpenguins/) package.[@gorman2014]
+
+```{r}
+#| label: load-packages
+library(tidyverse)
+library(ggthemes)
+library(palmerpenguins)
+library(gt)
+```
+
+```{r}
+glimpse(penguins)
+```
+
+## Species
+
+```{r}
+#| label: bill-dims-species
+#| fig-width: 8
+#| fig-asp: 0.618
+#| fig-alt: "A scatterplot showing the relationship between bill length and depth of penguins, with points colored by species as well as smooth lines representing the relationship. The relationship is positive and relatively strong for each of the three species: Adelie, Chinstrap, and Gentoo."
+#| warning: false
+#| output-location: slide
+#| code-line-numbers: "|2|3-6|8-9|10"
+ggplot(
+  penguins,
+  aes(
+    x = bill_length_mm, y = bill_depth_mm,
+    color = species
+  )
+) +
+  geom_point() +
+  geom_smooth() +
+  scale_color_colorblind() +
+  theme(legend.position = "top") +
+  labs(x = "Bill length (mm)", y = "Bill depth (mm)")
+```
+
+## Penguins
+
+```{r}
+#| label: penguins-top10
+penguins |> # <1>
+  slice_head(n = 10) |> # <2>
+  select(species, island, bill_length_mm, bill_depth_mm) |> # <3>
+  gt() # <4>
+```
+
+1.  Take `penguins` data frame, and then,
+2.  Slice the top 10 rows, and then,
+3.  Select the indicated variables, and then,
+4.  Make a gt table.
+
+# Analysis
+
+## Modeling results
+
+::: columns
+::: {.column width="50%"}
+Some modeling results go here
+:::
+
+::: {.column width="50%"}
+Others go here
+
+```{r}
+1 + 1
+```
+:::
+:::
+
+## References
